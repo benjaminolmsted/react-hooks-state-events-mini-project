@@ -1,12 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Task() {
+function Task({category, text}) {
+  
+  const [isDeleted, setIsDeleted] = useState(false)
+  function setDeleted (){
+    setIsDeleted(true)
+  }
+
   return (
-    <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
-    </div>
+    isDeleted ? null : <div className="task">
+    <div className="label">{category}</div>
+    <div className="text">{text}</div>
+    <button className="delete" onClick={setDeleted}>X</button>
+  </div>
   );
 }
 
